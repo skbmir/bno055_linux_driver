@@ -68,12 +68,12 @@ s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
     }
 
     // prepare buffer
-    bus[0] = reg_addr; // set register address
+    buf[0] = reg_addr; // set register address
     for (datapos = 0; datapos < cnt; datapos++) // VVV
         buf[datapos + 1] = reg_data[datapos];   // copy data to buffer
 
     // try to write data to bno055
-    if (write(bno055_file, buf, cnt + 1) != (cnt + 1)
+    if (write(bno055_file, buf, cnt + 1) != (cnt + 1))
         ret = BNO055_ERROR;
 
     return ret;
