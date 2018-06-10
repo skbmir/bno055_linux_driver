@@ -58,11 +58,10 @@ void BNO055_I2C_init(const char *filename, int dev_address)
 s8 BNO055_I2C_bus_write(u8 dev_addr, u8 reg_addr, u8 *reg_data, u8 cnt)
 {
     s8 ret = BNO055_SUCCESS;
-    u8 addr = reg_addr;
     u8 buf[MAX_RDWR_BUF_LEN];
     u8 datapos;
 
-    if (cnt > MAX_RDWR_BUF_LEN)
+    if ((cnt + 1) > MAX_RDWR_BUF_LEN)
     {
         ret = BNO055_ERROR;
         return ret;
