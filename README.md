@@ -21,7 +21,7 @@ Published topics:
 
 # Installation
 
-  Make sure you sources your_catkin_ws/devel/setup.bash
+  Make sure you sourced your_catkin_ws/devel/setup.bash
 
     $ cd your_catkin_ws
     $ source devel/setup.bash
