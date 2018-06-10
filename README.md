@@ -34,7 +34,7 @@ Published topics:
   Then go back to your catkin workspace and build package
 
     $ cd ..
-    $ catkin_make bno055_opi_driver
+    $ catkin_make --pkg bno055_opi_driver
 
   After this steps you should be able to run bno055 node
 
