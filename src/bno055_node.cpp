@@ -23,6 +23,12 @@ int main(int argc, char *argv[])
     ros::Publisher mag_publisher = node_h.advertise<sensor_msgs::MagneticField>("imu/mag", 1);
     ros::Publisher temp_publisher = node_h.advertise<sensor_msgs::Temperature>("imu/temp", 1);
 
+    tf::TransformBroadcaster broadcaster;
+    tf::Transform transform;
+
+    transform.setOrigin(tf::Vector3(0.0, 0.2, 1.0));
+    transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
+
     // load parameters
     int bno055_addr;
     ros::param::param("bno055_address", bno055_addr, BNO055_I2C_ADDR2);
@@ -100,6 +106,7 @@ int main(int argc, char *argv[])
         imu_publisher.publish(imu_msg);
         mag_publisher.publish(mag_msg);
         temp_publisher.publish(temp_msg);
+        broadcaster.sendTransform(transform, cur_time, "base_imu", "base_link");
 
         loop_rate.sleep();
     }
