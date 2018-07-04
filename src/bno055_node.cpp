@@ -106,7 +106,7 @@ int main(int argc, char *argv[])
         imu_publisher.publish(imu_msg);
         mag_publisher.publish(mag_msg);
         temp_publisher.publish(temp_msg);
-        broadcaster.sendTransform(transform, cur_time, "base_imu", "base_link");
+        broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_imu", "base_link"));
 
         loop_rate.sleep();
     }
