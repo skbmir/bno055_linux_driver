@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     ros::param::param("bno055_rate", rate, 50);
 
     std::string frame_id;
-    ros::param::param<std::string>("~frame_id", frame_id, "world");
+    ros::param::param<std::string>("frame_id", frame_id, "base_imu");
 
     // init i2c device
     BNO055_I2C_init(bno055_i2c_name.c_str(), bno055_addr);
