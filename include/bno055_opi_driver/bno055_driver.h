@@ -140,13 +140,12 @@ void BNO055_delay_msec(u32 msec)
 }
 
 // read raw quaternion data from bno055 and convert to double format
-// see bno055 datasheet -> 3.6.5.5 Orientation (Quaternion)
-// Quaternion data representation
-// 1 quaternion = 2^14 raw
 void bno055_convert_double_quaternion_wxyz(bno055_quaternion_double_t *quat_data)
 {
     bno055_quaternion_t raw_quat;
-    const double scale = 1.0 / (1 << 14);
+    const double scale = 1.0 / (1 << 14); // see bno055 datasheet -> 3.6.5.5 Orientation (Quaternion)
+                                          // Quaternion data representation
+                                          // 1 quaternion = 2^14 raw
 
     bno055_read_quaternion_wxyz(&raw_quat);
 
