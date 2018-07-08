@@ -31,16 +31,16 @@ int main(int argc, char *argv[])
 
     // load parameters
     int bno055_addr;
-    ros::param::param("bno055_address", bno055_addr, BNO055_I2C_ADDR2);
+    ros::param::param("~bno055_address", bno055_addr, BNO055_I2C_ADDR2);
 
     std::string bno055_i2c_name;
-    ros::param::param<std::string>("bno055_i2c_name", bno055_i2c_name, "/dev/i2c-1");
+    ros::param::param<std::string>("~bno055_i2c_name", bno055_i2c_name, "/dev/i2c-1");
 
     int rate;
-    ros::param::param("bno055_rate", rate, 50);
+    ros::param::param("~bno055_rate", rate, 50);
 
     std::string frame_id;
-    ros::param::param<std::string>("frame_id", frame_id, "base_imu");
+    ros::param::param<std::string>("~frame_id", frame_id, "base_imu");
 
     // init i2c device
     BNO055_I2C_init(bno055_i2c_name.c_str(), bno055_addr);
