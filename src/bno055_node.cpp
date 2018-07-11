@@ -30,8 +30,8 @@ int main(int argc, char *argv[])
 
     bl_transform.setOrigin(tf::Vector3(0.3, 0.2, 1.0));
     bl_transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
-    bf_transform.setOrigin(tf::Vector3(0.3, 0.2, 0.0));
-    bf_transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
+    //bf_transform.setOrigin(tf::Vector3(0.3, 0.2, 0.0));
+    //bf_transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
 
     // load parameters
     int bno055_addr;
@@ -110,8 +110,8 @@ int main(int argc, char *argv[])
         imu_publisher.publish(imu_msg);
         mag_publisher.publish(mag_msg);
         temp_publisher.publish(temp_msg);
-        bl_broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_imu", "base_link"));
-        bf_broadcaster.sendTransform(tf::stampedTransform(transform, cur_time, "base_imu", "base_footprint"));
+        bl_broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_link", "base_imu"));
+        //bf_broadcaster.sendTransform(tf::stampedTransform(transform, cur_time, "base_footprint", "base_imu"));
 
         loop_rate.sleep();
     }
