@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>bno055_opi_driver</name>
-  <version>0.0.0</version>
-  <description>The Bosch BNO055 driver package for Orange Pi PC</description>
+  <name>bno055_linux_driver</name>
+  <version>0.1.0</version>
+  <description>The Bosch BNO055 driver package for linux powered single board computers</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->
