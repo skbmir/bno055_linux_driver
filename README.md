@@ -1,8 +1,9 @@
 # bno055_opi_driver
 
-Bosch BNO055 9dof imu ROS node for Orange Pi PC 
+Bosch BNO055 9dof imu ROS node for linux powered single board computers
 
-should work on compatible boards
+should work on:
+- Orange Pi PC
 
 ------
 
