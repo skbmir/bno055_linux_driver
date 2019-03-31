@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(bno055_opi_driver)
+project(bno055_linux_driver)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -119,7 +119,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   include
-  include/bno055_opi_driver
+  include/bno055_linux_driver
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -195,7 +195,7 @@ target_link_libraries(bno055_node
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_bno055_opi_driver.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_bno055_linux_driver.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
