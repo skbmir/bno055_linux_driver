@@ -22,11 +22,6 @@ Published topics:
 
 # Installation
 
-  Make sure you sourced your_catkin_ws/devel/setup.bash
-
-    $ cd your_catkin_ws
-    $ source devel/setup.bash
-
   In your catkin workspace go to src dir and download package sources
 
     $ cd src
@@ -36,6 +31,11 @@ Published topics:
 
     $ cd ..
     $ catkin_make --pkg bno055_linux_driver
+    
+  Before use make sure you sourced your_catkin_ws/devel/setup.bash
+
+    $ cd your_catkin_ws
+    $ source devel/setup.bash
 
   After this steps you should be able to run bno055 node
 
