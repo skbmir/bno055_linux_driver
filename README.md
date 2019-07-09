@@ -5,6 +5,8 @@ Bosch BNO055 9dof imu ROS node for linux powered single board computers
 should work on:
 - Orange Pi PC
 
+This node uses [Bosch BNO055 driver](https://github.com/BoschSensortec/BNO055_driver)
+
 ------
 
 Parameters:

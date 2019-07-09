@@ -8,6 +8,7 @@
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/MagneticField.h>
 #include <sensor_msgs/Temperature.h>
+#include <tf/tf.h>
 #include <tf/transform_broadcaster.h>
 #include <boost/bind.hpp>
 #include <boost/asio/io_service.hpp>
@@ -23,15 +24,11 @@ int main(int argc, char *argv[])
     ros::Publisher mag_publisher = node_h.advertise<sensor_msgs::MagneticField>("imu/mag", 1);
     ros::Publisher temp_publisher = node_h.advertise<sensor_msgs::Temperature>("imu/temp", 1);
 
-    tf::TransformBroadcaster bl_broadcaster;
-    tf::TransformBroadcaster bf_broadcaster;
-    tf::Transform bl_transform;
-    tf::Transform bf_transform;
+    tf::TransformBroadcaster tf_broadcaster;
+    tf::Transform transform;
 
-    bl_transform.setOrigin(tf::Vector3(0.3, 0.2, 1.0));
-    bl_transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
-    //bf_transform.setOrigin(tf::Vector3(0.3, 0.2, 0.0));
-    //bf_transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
+    transform.setOrigin(tf::Vector3(0.3, 0.2, 1.0));
+    transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
 
     // load parameters
     int bno055_addr;
@@ -110,8 +107,7 @@ int main(int argc, char *argv[])
         imu_publisher.publish(imu_msg);
         mag_publisher.publish(mag_msg);
         temp_publisher.publish(temp_msg);
-        bl_broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_link", "base_imu"));
-        //bf_broadcaster.sendTransform(tf::stampedTransform(transform, cur_time, "base_footprint", "base_imu"));
+        tf_broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_link", "base_imu"));
 
         loop_rate.sleep();
     }
