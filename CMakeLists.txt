@@ -29,7 +29,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
   INCLUDE_DIRS include
-#  LIBRARIES bno055_opi_driver
+#  LIBRARIES bno055
   CATKIN_DEPENDS geometry_msgs roscpp sensor_msgs std_msgs tf
 #  DEPENDS system_lib
 )
@@ -47,15 +47,18 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(libbno055 src/bno055.c)
+## add_library(libbno055 src/bno055.c)
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(bno055_node src/bno055_node.cpp)
+add_executable(bno055_node src/bno055_node.cpp src/bno055.c)
+add_executable(bno055_calibrate src/bno055_calibrate.cpp src/bno055.c)
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(bno055_node
-   libbno055
+   ${catkin_LIBRARIES}
+)
+target_link_libraries(bno055_calibrate
    ${catkin_LIBRARIES}
 )
