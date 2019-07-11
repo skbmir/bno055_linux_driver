@@ -57,6 +57,10 @@
 /*				INCLUDES	*/
 /*******************************************************/
 #include "bno055.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 /*! file <BNO055 >
     brief <Sensor driver for BNO055> */
 /*	STRUCTURE DEFINITIONS	*/
@@ -17595,3 +17599,7 @@ if (p_bno055 == BNO055_INIT_VALUE)  {
 		(prev_opmode_u8);
 	return com_rslt;
 }
+
+#ifdef __cplusplus
+}
+#endif

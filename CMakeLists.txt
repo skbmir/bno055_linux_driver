@@ -3,6 +3,7 @@ project(bno055_linux_driver)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=gnu++11 -fpermissive)
+set(CMAKE_C_FLAGS "-std=c99")
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -47,7 +48,7 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(bno055 src/bno055.cpp)
+add_library(bno055 src/bno055.c)
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context

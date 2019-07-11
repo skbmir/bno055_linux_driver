@@ -72,9 +72,14 @@
 * @brief For the Linux platform support
 * Please use the types.h for your data types definitions
 */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #ifdef	__KERNEL__
 
 #include <linux/types.h>
+
 /* singed integer type*/
 typedef	int8_t s8;/**< used for signed 8bit */
 typedef	int16_t s16;/**< used for signed 16bit */
@@ -7970,4 +7975,9 @@ u8 *gyro_awake_durn_u8);
  */
 BNO055_RETURN_FUNCTION_TYPE bno055_set_gyro_any_motion_awake_durn(
 u8 gyro_awake_durn_u8);
+
+#endif
+
+#ifdef __cplusplus
+}
 #endif
