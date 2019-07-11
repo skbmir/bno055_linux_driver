@@ -1,6 +1,6 @@
 #include <iostream>
 #include <fstream>
-#include "bno055_driver.h"
+#include <bno055_driver.h>
 
 int main(int argc, char** argv)
 {
@@ -57,9 +57,9 @@ int main(int argc, char** argv)
 
             std::ofstream out(argv[1]);
 
-            out << accel_offset.x << "," << accel_offset.y << "," << accel_offset.z << "," << accel_offset.r << std::endl;
-            out << gyro_offset.x << "," << gyro_offset.y << "," << gyro_offset.z << "," << std::endl;
-            out << mag_offset.x << "," << mag_offset.y << "," << gyro_offset.z << "," << mag_offset.r << std::endl;
+            out << accel_offset.x << " " << accel_offset.y << " " << accel_offset.z << " " << accel_offset.r << std::endl;
+            out << gyro_offset.x << " " << gyro_offset.y << " " << gyro_offset.z << " " << std::endl;
+            out << mag_offset.x << " " << mag_offset.y << " " << gyro_offset.z << " " << mag_offset.r << std::endl;
 
             out.close();
 
