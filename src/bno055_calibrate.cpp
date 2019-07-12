@@ -47,10 +47,14 @@ int main(int argc, char** argv)
             bno055_accel_offset_t accel_offset;
             bno055_gyro_offset_t gyro_offset;
             bno055_mag_offset_t mag_offset;
+            
+            bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
 
             bno055_read_accel_offset(&accel_offset);
             bno055_read_gyro_offset(&gyro_offset);
             bno055_read_mag_offset(&mag_offset);
+
+            bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF);
 
             if (argc < 2)
                 exit(1);

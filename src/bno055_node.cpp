@@ -56,10 +56,6 @@ int main(int argc, char *argv[])
     calib >> gyro_offset.x >> gyro_offset.y >> gyro_offset.z;
     calib >> mag_offset.x >> mag_offset.y >> mag_offset.z >> mag_offset.r;
 
-    bno055_write_accel_offset(&accel_offset);
-    bno055_write_gyro_offset(&gyro_offset);
-    bno055_write_mag_offset(&mag_offset);
-
     // init i2c device
     BNO055_I2C_init(bno055_i2c_name.c_str(), bno055_addr);
 
@@ -73,6 +69,13 @@ int main(int argc, char *argv[])
     // init bno055
     bno055_init(&BNO_dev); // driver's basic init routine
     bno055_set_power_mode(BNO055_POWER_MODE_NORMAL); // normal power mode
+
+    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
+
+    bno055_write_accel_offset(&accel_offset);
+    bno055_write_gyro_offset(&gyro_offset);
+    bno055_write_mag_offset(&mag_offset);
+
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF); // operation mode if 9dof sensor fusion
 
     ros::Rate loop_rate(rate);
