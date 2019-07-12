@@ -9,11 +9,6 @@
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/MagneticField.h>
 #include <sensor_msgs/Temperature.h>
-#include <tf/tf.h>
-#include <tf/transform_broadcaster.h>
-#include <boost/bind.hpp>
-#include <boost/asio/io_service.hpp>
-#include <boost/shared_ptr.hpp>
 #include <bno055_driver.h>
 
 int main(int argc, char *argv[])
@@ -24,12 +19,6 @@ int main(int argc, char *argv[])
     ros::Publisher imu_publisher = node_h.advertise<sensor_msgs::Imu>("imu/data", 1);
     ros::Publisher mag_publisher = node_h.advertise<sensor_msgs::MagneticField>("imu/mag", 1);
     ros::Publisher temp_publisher = node_h.advertise<sensor_msgs::Temperature>("imu/temp", 1);
-
-    tf::TransformBroadcaster tf_broadcaster;
-    tf::Transform transform;
-
-    transform.setOrigin(tf::Vector3(0.3, 0.2, 1.0));
-    transform.setRotation(tf::Quaternion(0.0, 0.0, 0.0, 1.0));
 
     // load parameters
     int bno055_addr;
@@ -127,7 +116,6 @@ int main(int argc, char *argv[])
         imu_publisher.publish(imu_msg);
         mag_publisher.publish(mag_msg);
         temp_publisher.publish(temp_msg);
-        tf_broadcaster.sendTransform(tf::StampedTransform(transform, cur_time, "base_link", "base_imu"));
 
         loop_rate.sleep();
     }
