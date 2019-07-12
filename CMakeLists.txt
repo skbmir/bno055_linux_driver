@@ -30,7 +30,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
   INCLUDE_DIRS include include/bno055_linux_driver
   LIBRARIES bno055
-  CATKIN_DEPENDS geometry_msgs roscpp sensor_msgs std_msgs tf
+  CATKIN_DEPENDS geometry_msgs roscpp sensor_msgs std_msgs
 #  DEPENDS system_lib
 )
 
