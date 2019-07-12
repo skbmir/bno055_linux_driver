@@ -1,7 +1,3 @@
 <launch>
-    <machine name="orangepipc" address="orangepipc" ros-root="/opt/ros/kinetic" ros-package-path="/home/stdbreaks/workspace/catkin_ros/src" user="stdbreaks">
-        <env name="ROS_MASTER_URI" value="http://X300D:11311/"/>
-    </machine>
-
-    <node machine="orangepipc" name="bno055_node" pkg="bno055_opi_driver" type="bno055_node" />
+    <node name="bno055_node" pkg="bno055_linux_driver" type="bno055_node" />
 </launch>

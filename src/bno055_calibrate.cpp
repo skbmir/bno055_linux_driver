@@ -38,9 +38,9 @@ int main(int argc, char** argv)
         if (cmd == "check")
         {
             std::cout << "Calibration status:" << std::endl <<
-                      "A: " << accel_status << 
-                      " G: " << gyro_status << 
-                      " M: " << mag_status << std::endl;
+                      "A: " << (int)accel_status << 
+                      " G: " << (int)gyro_status << 
+                      " M: " << (int)mag_status << std::endl;
         }
         else if (cmd == "save")
         {
