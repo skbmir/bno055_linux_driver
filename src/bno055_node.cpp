@@ -112,11 +112,11 @@ int main(int argc, char *argv[])
         imu_msg.linear_acceleration_covariance[1] = 0.0;
         imu_msg.linear_acceleration_covariance[2] = 0.0;
         imu_msg.linear_acceleration_covariance[3] = 0.0;
-        imu_msg.linear_acceleration_covariance[4] = 0.5;
+        imu_msg.linear_acceleration_covariance[4] = 0.2;
         imu_msg.linear_acceleration_covariance[5] = 0.0;
         imu_msg.linear_acceleration_covariance[6] = 0.0;
         imu_msg.linear_acceleration_covariance[7] = 0.0;
-        imu_msg.linear_acceleration_covariance[8] = 1.0;
+        imu_msg.linear_acceleration_covariance[8] = 0.01;
 
         imu_msg.angular_velocity.x = ang_vel.x;
         imu_msg.angular_velocity.y = ang_vel.y;
