@@ -5,10 +5,13 @@
 #include <ros/node_handle.h>
 #include <ros/param.h>
 #include <ros/time.h>
+#include <geometry_msgs/Quaternion.h>
 #include <geometry_msgs/PoseStamped.h>
 #include <sensor_msgs/Imu.h>
 #include <sensor_msgs/MagneticField.h>
 #include <sensor_msgs/Temperature.h>
+#include <tf2/LinearMath/Quaternion.h>
+#include <tf2/transform_datatypes.h>
 #include <bno055_driver.h>
 
 int main(int argc, char *argv[])
@@ -85,16 +88,18 @@ int main(int argc, char *argv[])
         sensor_msgs::Imu imu_msg;
         sensor_msgs::MagneticField mag_msg;
         sensor_msgs::Temperature temp_msg;
+        tf2::Quaternion orientation = tf2::Quaternion(quat.x, quat.y, quat.z, quat.w);
+        orientation.normalize();
 
         ros::Time cur_time;
         cur_time = ros::Time::now();
 
         imu_msg.header.stamp = cur_time;
         imu_msg.header.frame_id = frame_id;
-        imu_msg.orientation.w = quat.w;
-        imu_msg.orientation.x = quat.x;
-        imu_msg.orientation.y = quat.y;
-        imu_msg.orientation.z = quat.z;
+        imu_msg.orientation.w = orientation.getW();
+        imu_msg.orientation.x = orientation.getX();
+        imu_msg.orientation.y = orientation.getY();
+        imu_msg.orientation.z = orientation.getZ();
         imu_msg.orientation_covariance[0] = 0.001;
         imu_msg.orientation_covariance[1] = 0.0;
         imu_msg.orientation_covariance[2] = 0.0;

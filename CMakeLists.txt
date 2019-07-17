@@ -10,6 +10,7 @@ set(CMAKE_C_FLAGS "-std=c99")
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
+  tf2
   roscpp
   sensor_msgs
   std_msgs
