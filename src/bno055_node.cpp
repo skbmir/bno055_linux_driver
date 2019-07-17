@@ -39,7 +39,7 @@ int main(int argc, char *argv[])
     std::string calib_file_name;
     ros::param::param<std::string>("~calibration_file_name", calib_file_name, "./calibration.csv");
 
-    std::ifstream calib;
+    std::ifstream calib(calib_file_name);
     bno055_accel_offset_t accel_offset;
     bno055_gyro_offset_t gyro_offset;
     bno055_mag_offset_t mag_offset;
@@ -62,11 +62,11 @@ int main(int argc, char *argv[])
     bno055_init(&BNO_dev); // driver's basic init routine
     bno055_set_power_mode(BNO055_POWER_MODE_NORMAL); // normal power mode
 
-//    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
+    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
 
-//    bno055_write_accel_offset(&accel_offset);
-//    bno055_write_gyro_offset(&gyro_offset);
-//    bno055_write_mag_offset(&mag_offset);
+    bno055_write_accel_offset(&accel_offset);
+    bno055_write_gyro_offset(&gyro_offset);
+    bno055_write_mag_offset(&mag_offset);
 
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF); // operation mode if 9dof sensor fusion
 
@@ -117,7 +117,7 @@ int main(int argc, char *argv[])
         imu_msg.linear_acceleration_covariance[1] = 0.0;
         imu_msg.linear_acceleration_covariance[2] = 0.0;
         imu_msg.linear_acceleration_covariance[3] = 0.0;
-        imu_msg.linear_acceleration_covariance[4] = 0.01;
+        imu_msg.linear_acceleration_covariance[4] = 0.1;
         imu_msg.linear_acceleration_covariance[5] = 0.0;
         imu_msg.linear_acceleration_covariance[6] = 0.0;
         imu_msg.linear_acceleration_covariance[7] = 0.0;
