@@ -59,11 +59,11 @@ int main(int argc, char *argv[])
     bno055_init(&BNO_dev); // driver's basic init routine
     bno055_set_power_mode(BNO055_POWER_MODE_NORMAL); // normal power mode
 
-    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
+//    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
 
-    bno055_write_accel_offset(&accel_offset);
-    bno055_write_gyro_offset(&gyro_offset);
-    bno055_write_mag_offset(&mag_offset);
+//    bno055_write_accel_offset(&accel_offset);
+//    bno055_write_gyro_offset(&gyro_offset);
+//    bno055_write_mag_offset(&mag_offset);
 
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF); // operation mode if 9dof sensor fusion
 
@@ -108,15 +108,15 @@ int main(int argc, char *argv[])
         imu_msg.linear_acceleration.x = lin_acc.x;
         imu_msg.linear_acceleration.y = lin_acc.y;
         imu_msg.linear_acceleration.z = lin_acc.z;
-        imu_msg.linear_acceleration_covariance[0] = 0.1;
+        imu_msg.linear_acceleration_covariance[0] = 0.05;
         imu_msg.linear_acceleration_covariance[1] = 0.0;
         imu_msg.linear_acceleration_covariance[2] = 0.0;
         imu_msg.linear_acceleration_covariance[3] = 0.0;
-        imu_msg.linear_acceleration_covariance[4] = 0.2;
+        imu_msg.linear_acceleration_covariance[4] = 0.01;
         imu_msg.linear_acceleration_covariance[5] = 0.0;
         imu_msg.linear_acceleration_covariance[6] = 0.0;
         imu_msg.linear_acceleration_covariance[7] = 0.0;
-        imu_msg.linear_acceleration_covariance[8] = 0.01;
+        imu_msg.linear_acceleration_covariance[8] = 0.2;
 
         imu_msg.angular_velocity.x = ang_vel.x;
         imu_msg.angular_velocity.y = ang_vel.y;
