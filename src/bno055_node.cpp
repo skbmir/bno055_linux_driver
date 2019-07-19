@@ -68,6 +68,11 @@ int main(int argc, char *argv[])
 //    bno055_write_gyro_offset(&gyro_offset);
 //    bno055_write_mag_offset(&mag_offset);
 
+
+    bno055_set_accel_range(BNO055_ACCEL_RANGE_16G);
+    bno055_set_gyro_range(BNO055_GYRO_RANGE_2000DPS);
+    bno055_set_mag_operation_mode(BNO055_MAG_OPERATION_MODE_HIGH_ACCURACY);
+
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF); // operation mode if 9dof sensor fusion
 
     ros::Rate loop_rate(rate);
