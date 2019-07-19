@@ -39,14 +39,14 @@ int main(int argc, char *argv[])
     std::string calib_file_name;
     ros::param::param<std::string>("~calibration_file_name", calib_file_name, "./calibration.csv");
 
-    std::ifstream calib(calib_file_name);
-    bno055_accel_offset_t accel_offset;
-    bno055_gyro_offset_t gyro_offset;
-    bno055_mag_offset_t mag_offset;
+//    std::ifstream calib(calib_file_name);
+//    bno055_accel_offset_t accel_offset;
+//    bno055_gyro_offset_t gyro_offset;
+//    bno055_mag_offset_t mag_offset;
 
-    calib >> accel_offset.x >> accel_offset.y >> accel_offset.z >> accel_offset.r;
-    calib >> gyro_offset.x >> gyro_offset.y >> gyro_offset.z;
-    calib >> mag_offset.x >> mag_offset.y >> mag_offset.z >> mag_offset.r;
+//    calib >> accel_offset.x >> accel_offset.y >> accel_offset.z >> accel_offset.r;
+//    calib >> gyro_offset.x >> gyro_offset.y >> gyro_offset.z;
+//    calib >> mag_offset.x >> mag_offset.y >> mag_offset.z >> mag_offset.r;
 
     // init i2c device
     BNO055_I2C_init(bno055_i2c_name.c_str(), bno055_addr);
@@ -62,11 +62,11 @@ int main(int argc, char *argv[])
     bno055_init(&BNO_dev); // driver's basic init routine
     bno055_set_power_mode(BNO055_POWER_MODE_NORMAL); // normal power mode
 
-    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
+//    bno055_set_operation_mode(BNO055_OPERATION_MODE_CONFIG);
 
-    bno055_write_accel_offset(&accel_offset);
-    bno055_write_gyro_offset(&gyro_offset);
-    bno055_write_mag_offset(&mag_offset);
+//    bno055_write_accel_offset(&accel_offset);
+//    bno055_write_gyro_offset(&gyro_offset);
+//    bno055_write_mag_offset(&mag_offset);
 
     bno055_set_operation_mode(BNO055_OPERATION_MODE_NDOF); // operation mode if 9dof sensor fusion
 
